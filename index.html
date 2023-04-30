@@ -115,6 +115,41 @@
             </div>
         </div>
     </section>
+    <section class="hw4">
+        <div class="hw4_content container">
+            <div class="card">
+                <div class="card-header">
+                   <h1>Bài tập 4: Tính tiền cáp</h1>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                      <label >Loại khách hàng</label>
+                      <select class="form-control" id="loaiKH">
+                        <option >Chọn loại khách hàng</option>
+                        <option value="Doanh nghiệp">Doanh nghiệp</option>
+                        <option value="Nhà dân">Nhà dân</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label >Nhập mã khách hàng: </label>
+                      <input type="text" id="maKH" class="form-control" placeholder="" >
+                    </div>
+                    <div class="form-group">
+                        <label >Số kênh cao cấp: </label>
+                        <input type="number" id="soCaoCap" class="form-control" placeholder="" >
+                      </div>
+                      <div class="form-group" style="display: none" id="soKetNoi">
+                        <label >Nhập số kết nối: </label>
+                        <input type="number" id="soKetNoi" class="form-control" placeholder="" >
+                      </div>
+                      <button id="btnTinhTienCap" type="button" class="btn btn-warning">Tính tiền cáp</button>
+                </div>
+                <div class="card-footer text-muted" id="hw4_footer">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="./main.js"></script>

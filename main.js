@@ -128,3 +128,41 @@ btnTinhTienThue.onclick = function () {
     currentFormat.format(tax) +
     " VND";
 };
+//Bài tập 5
+//input khách hàng nhập vào loại khách hàng, mã khách hàng và số kênh cao cấp
+document.getElementById("loaiKH").onchange=function(){
+  var loaiKH=document.getElementById("loaiKH").value
+  if(loaiKH==="Doanh nghiệp"){
+    document.getElementById("soKetNoi").style.display="block";
+  }
+  if(loaiKH==="Nhà dân"){
+    document.getElementById("soKetNoi").style.display="none";
+  }
+}
+
+var currentFormat = new Intl.NumberFormat("vn-VN");
+var btnTinhTienCap=document.getElementById("btnTinhTienCap").onclick=function(){
+var loaiKH = "";
+var maKH = "";
+var soCaoCap=0;
+var soKetNoi=0;
+var tienCap=0;
+loaiKH=document.getElementById("loaiKH").value;
+soCaoCap=document.getElementById("soCaoCap").value*1;
+if(loaiKH==="Nhà dân"){
+tienCap=4.5+20.5 + 7.5*soCaoCap;
+}if(loaiKH==="Doanh nghiệp"){
+  soKetNoi=document.getElementById("soKetNoi").value*1;
+  if (soKetNoi<=10){
+  tienCap=4.5+20.5 + 7.5*soCaoCap + 75;
+  } else if (soKetNoi>10){
+    tienCap= 4.5+20.5 + 7.5*soCaoCap + 75 + (soKetNoi-10)*5;
+  }
+  }
+  //Xuất thông tin ra màn hình
+  document.getElementById("hw4_footer").innerHTML ="<p>Mã khách hàng: </p>" +
+    maKH +
+    "<p>Tổng tiền cáp là: </p>" +
+    currentFormat.format(tienCap) +
+    " VND";
+}

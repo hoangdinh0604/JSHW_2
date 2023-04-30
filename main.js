@@ -47,6 +47,7 @@ const TIEN5 = 1300;
 btnTinhTienDien.onclick = function () {
   kw_n = document.getElementById("kw_n").value * 1;
   ten = document.getElementById("ten").value;
+  var currentFormat = new Intl.NumberFormat("vn-VN");
   if (kw_n < 0) {
     alert("Vui lòng nhập vào số tiền đúng!");
   }
@@ -56,7 +57,7 @@ btnTinhTienDien.onclick = function () {
     tongTienDien = 50 * TIEN1 + (kw_n - 50) * TIEN2;
   } else if (kw_n > 100 && kw_n <= 200) {
     tongTienDien = 50 * TIEN1 + 50 * TIEN2 + (kw_n - 100) * TIEN3;
-  } else if (kw_n > 200 && 350) {
+  } else if (kw_n > 200 && kw_n <= 350) {
     tongTienDien = 50 * TIEN1 + 50 * TIEN2 + 100 * TIEN3 + (kw_n - 200) * TIEN4;
   } else {
     tongTienDien =
@@ -68,6 +69,62 @@ btnTinhTienDien.onclick = function () {
   }
   //Xuất thông tin ra màn hình
   document.getElementById("hw2_footer").innerHTML =
-      "<p>Tên khách hàng: </p>"+ ten + "<p>Tổng tiền: </p>" + tongTienDien +"VND";
+    "<p>Tên khách hàng: </p>" +
+    ten +
+    "<p>Tổng tiền: </p>" +
+    currentFormat.format(tongTienDien) +
+    " VND";
 };
 //Bài tập 3:
+//input người dùng nhập vào tên và tổng thu nhập năm và số người phụ thuộc
+var btnTinhTienThue = document.getElementById("btnTinhTienThue");
+var tax = 0;
+var currentFormat = new Intl.NumberFormat("vn-VN");
+btnTinhTienThue.onclick = function () {
+  var hoTen = document.getElementById("hoTen").value;
+  var thuNhap = document.getElementById("tongThuNhap").value * 1;
+  var soPhuThuoc = document.getElementById("soPhuThuoc").value * 1;
+ if (thuNhap<0){
+  alert("Vui lòng nhập số tiền đúng!!")
+ }
+ var tienPhuThuoc= 4e+6 +soPhuThuoc*1.6e+6;
+  if (thuNhap <= 60e+6) {
+    tax = thuNhap * 0.5 - tienPhuThuoc;
+  } else if (60e+6 < thuNhap && thuNhap <= 120e+6) {
+    tax = 60e+6 * 0.5 + (thuNhap - 60e+6) * 0.1 - tienPhuThuoc;
+  } else if (120e+6 < thuNhap && thuNhap <= 210e+6) {
+    tax = 60 * 0.5 + 60e+6 * 0.1 + (thuNhap - 120e+6) * 0.15 - tienPhuThuoc;
+  } else if (210e+6 < thuNhap && thuNhap <= 384e+6) {
+    tax = 60e+6 * 0.5 + 60e+6 * 0.1 + 90e+6 * 0.15 - (thuNhap - 210) * 0.2- tienPhuThuoc;
+  } else if (384e+6 < thuNhap && thuNhap <= 624e+6) {
+    tax =
+      60e+6 * 0.5 +
+      60e+6 * 0.1 +
+      90e+6 * 0.15 -
+      174e+6 * 0.2 +
+      (thuNhap - 384e+6) * 0.25 - tienPhuThuoc;
+  } else if (624e+6 < thuNhap && thuNhap <= 960e+6) {
+    tax =
+      60e+6 * 0.5 +
+      60e+6 * 0.1 +
+      90e+6 * 0.15 -
+      174e+6 * 0.2 +
+      240e+6 * 0.25 +
+      (thuNhap - 620e+6) * 0.35 - tienPhuThuoc;
+  } else if (thuNhap > 960e+6) {
+    tax =
+      60e+6 * 0.5 +
+      60e+6 * 0.1 +
+      90e+6 * 0.15 -
+      174e+6 * 0.2 +
+      240e+6 * 0.25 +
+      336e+6 * 0.35(thuNhap - 960e+6) * 0.35 - tienPhuThuoc;
+  }
+  //Xuất thông tin ra màn hình
+  document.getElementById("hw3_footer").innerHTML =
+    "<p>Tên khách hàng: </p>" +
+    hoTen +
+    "<p>Tổng tiền phải đóng thuế là: </p>" +
+    currentFormat.format(tax) +
+    " VND";
+};
